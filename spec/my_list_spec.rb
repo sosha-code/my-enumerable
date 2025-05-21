@@ -114,4 +114,20 @@ describe 'MyList' do
 		  expect(@list.my_any?).to be_an(Enumerator)
 		end
 	end
+
+	describe "#my_none?" do
+		it "returns true if none of the item matches the condition" do
+	  	result = @list.my_none? {|item| item.size == 3 }
+	    expect(result).to be true
+	  end			
+
+	  it "returns false if any item matches the condition" do
+	  	result = @list.my_none? {|item| item.include?("a")}
+	    expect(result).to be false
+	  end	
+
+	  it "returns Enumerator if no block is given" do
+		  expect(@list.my_none?).to be_an(Enumerator)
+		end
+	end
 end

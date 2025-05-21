@@ -69,7 +69,18 @@ class MyList
 		each do |item|
 			return true if yield(item)
 		end
-		
+
 		false
 	end
+
+	def my_none?
+		return enum_for(:my_none?) unless block_given?
+
+		each do |item|
+			return false if yield(item)
+		end
+
+		true
+	end
+
 end
