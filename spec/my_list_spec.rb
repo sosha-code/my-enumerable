@@ -82,4 +82,16 @@ describe 'MyList' do
 			expect(result).to eq("abc")
 		end
 	end
+
+	describe "#my_all?" do
+	  it "returns true if all items match condition" do
+	  	result = @list.my_all? {|item| item.include?("a")}
+	    expect(result).to be true
+	  end	
+
+	  it "returns false if all items doesnt match condition" do
+	  	result = @list.my_all? {|item| item.include?("b")}
+	    expect(result).to be false
+	  end
+	end
 end

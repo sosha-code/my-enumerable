@@ -52,4 +52,14 @@ class MyList
 		end
 		sum
 	end
+
+	def my_all?
+		return enum_for(:my_all?) unless block_given?
+
+		each do |item|
+			return false unless yield(item)
+		end
+
+		true
+	end
 end
