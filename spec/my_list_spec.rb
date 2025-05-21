@@ -93,5 +93,25 @@ describe 'MyList' do
 	  	result = @list.my_all? {|item| item.include?("b")}
 	    expect(result).to be false
 	  end
+
+	  it "returns Enumerator if no block is given" do
+		  expect(@list.my_all?).to be_an(Enumerator)
+		end
+	end
+
+	describe "#my_any?" do
+		it "returns true if atleast one item match the condition" do
+	  	result = @list.my_any? {|item| item.include?("a")}
+	    expect(result).to be true
+	  end			
+
+	  it "returns false if no items match the condition" do
+	  	result = @list.my_any? {|item| item.include?("k")}
+	    expect(result).to be false
+	  end	
+
+	  it "returns Enumerator if no block is given" do
+		  expect(@list.my_any?).to be_an(Enumerator)
+		end
 	end
 end

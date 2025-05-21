@@ -61,5 +61,15 @@ class MyList
 		end
 
 		true
+	end	
+
+	def my_any?
+		return enum_for(:my_any?) unless block_given?
+
+		each do |item|
+			return true if yield(item)
+		end
+		
+		false
 	end
 end
