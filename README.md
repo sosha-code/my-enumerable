@@ -1,6 +1,10 @@
 ## MyEnumerable
 
-This project re-implements, the core enumerbale methods like map, select, reject, reduce with custom methods like each, my_map, my_select, my_reject and my_reduce, using blocks, yield and enum_for features. 
+This project re-implements, the core enumerbale methods like `map`, `select`, `reject`, `reduce` with custom methods like `each`, `my_map`, `my_select`, `my_reject` and `my_reduce`. It also includes logical methods like `my_all?`, `my_any?`, and `my_none`.
+
+These are built using fundamental Ruby features like blocks, yield, and enum_for.
+
+
 
 ## Files Added
 
@@ -9,12 +13,15 @@ This project re-implements, the core enumerbale methods like map, select, reject
 
 ## Features
 
-- Custom `#each` method to enable iteration
-- `#my_map` – map-like behavior
-- `#my_select` – select items based on a condition
-- `#my_reject` – exclude items based on a condition
-- `#my_reduce` – accumulate values
-- Returns `Enumerator` if no block is given
+- Custom `#each` method for iteration
+- `#my_map` – transform each item
+- `#my_select` – filter items where the block returns true
+- `#my_reject` – filter items where the block returns false
+- `#my_reduce` – add items into a single value
+- `#my_all?` – check if all items satisfy the condition
+- `#my_any?` – check if any item satisfies the condition
+- `#my_none?` – check if no items satisfy the condition
+- Returns an Enumerator when no block is given
 
 ## Example usage
 
@@ -40,3 +47,12 @@ list.my_reject { |item| item.include?("p") }
 list2 = MyList.new([1, 2, 3, 4])
 list2.my_reduce(0) { |sum, n| sum + n }
 # => 10
+
+list.my_all? { |item| item.length > 2 }
+# => true
+
+list.my_any? { |item| item.start_with?("b") }
+# => true
+
+list.my_none? { |item| item.include?("z") }
+# => true
