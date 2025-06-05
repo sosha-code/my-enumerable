@@ -34,7 +34,7 @@ class MyList
 
 	  result = []
 	  each {|item| result << item unless yield(item)}
-	  return result
+	  result
 	end
 
 	def my_reduce(initial_value=nil)
