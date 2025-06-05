@@ -1,6 +1,6 @@
 ## MyEnumerable
 
-This project re-implements, the core enumerbale methods like `map`, `select`, `reject`, `reduce` with custom methods like `each`, `my_map`, `my_select`, `my_reject` and `my_reduce`. It also includes logical methods like `my_all?`, `my_any?`, and `my_none`.
+This Ruby project re-implements core Enumerable methods like `map`, `select`, `reject`, and logical methods such as `all?`, `any?`, and `none?`. It also includes a user-friendly Command Line Interface (CLI) to interact with these methods dynamically.
 
 These are built using fundamental Ruby features like blocks, yield, and enum_for.
 
@@ -13,46 +13,53 @@ These are built using fundamental Ruby features like blocks, yield, and enum_for
 
 ## Features
 
-- Custom `#each` method for iteration
-- `#my_map` – transform each item
-- `#my_select` – filter items where the block returns true
-- `#my_reject` – filter items where the block returns false
-- `#my_reduce` – add items into a single value
-- `#my_all?` – check if all items satisfy the condition
-- `#my_any?` – check if any item satisfies the condition
-- `#my_none?` – check if no items satisfy the condition
-- Returns an Enumerator when no block is given
+- Custom implementations of common Ruby enumerable methods:
+  - `my_map`
+  - `my_select`
+  - `my_reject`
+  - `my_all?`
+  - `my_any?`
+  - `my_none?`
+
+- Interactive CLI to:
+  - Enter a custom list of words
+  - Choose a method
+  - Choose a condition (like includes 'a', starts with 'b', length > 5)
+
+- Input validation and graceful exits
+
+- Clean modular code structure
+
+
+## 🛠 How to Run
+
+Make sure you have Ruby installed.
+
+1. Clone this repository:
+```bash
+   git clone https://github.com/your-username/my_enumerable.git
+   cd my_enumerable
+   ruby cli.rb
+```
+
+
+
 
 ## Example usage
 
 ```ruby
 
-require_relative 'lib/my_list'
+Enter comma-separated words (like: apple, banana, cherry). Type 'exit' to quit:
+> apple, banana, cat
 
-list = MyList.new(["apple", "banana", "grape"])
+Choose a method number:
+1. my_map
+2. my_select
+...
 
-# Custom map
-list.my_map { |item| item.upcase }
-# => ["APPLE", "BANANA", "GRAPE"]
+Choose a condition:
+1. Include 'a'
+2. Starts with 'b'
+...
 
-# Custom select
-list.my_select { |item| item.include?("pp") }
-# => ["apple"]
-
-# Custom reject
-list.my_reject { |item| item.include?("p") }
-# => ["banana"]
-
-# Custom reduce
-list2 = MyList.new([1, 2, 3, 4])
-list2.my_reduce(0) { |sum, n| sum + n }
-# => 10
-
-list.my_all? { |item| item.length > 2 }
-# => true
-
-list.my_any? { |item| item.start_with?("b") }
-# => true
-
-list.my_none? { |item| item.include?("z") }
-# => true
+Result of my_select: ["apple", "banana"]
